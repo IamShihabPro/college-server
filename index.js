@@ -34,6 +34,14 @@ async function run() {
 
 
 
+    //college data post
+    app.post('/colleges', async(req, res)=>{
+      const collegeData = req.body
+      console.log(collegeData);
+      const result = await collegeCollection.insertOne(collegeData)
+      res.send(result)
+    })
+
     //get all colleges
     app.get('/colleges', async(req, res)=>{
     const result = await collegeCollection.find().toArray()
